@@ -1,3 +1,4 @@
+// work in progress //
 // ⭐️ Example Challenge START ⭐️
 
 /**
@@ -15,7 +16,7 @@
  * should return 'foofoo'.
 */
 function processFirstItem(stringList, callback) {
-  return callback(stringList[0])
+  return callback(stringList[0]);
 }
 
 // ⭐️ Example Challenge END ⭐️
@@ -28,10 +29,15 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * Counter 1 uses nested functions. It also keeps the variable count within the function. 
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ * Counter1 uses closure. It limits the scope of the variable "count." the closure ends at return function counter();.
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ * Counter 1 would be preferable if the variable count is going to be used elsewhere in the code.
+ * 
 */
 
 // counter1 code
@@ -56,10 +62,8 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  return Math.floor(Math.random()*3);
 }
 
 /* Task 3: finalScore()
@@ -76,10 +80,18 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(scoreGenerator, inningNumber){
+  let homeScore = 0;
+  let awayScore = 0;
+  for (let inn = 0; inn < inningNumber; inn++){
+    homeScore = homeScore + scoreGenerator();
+    awayScore = awayScore + scoreGenerator();
+  }
+  const score = {
+    home: homeScore,
+    away: awayScore
+  };
+  return score;
 }
 
 /* Task 4: 
@@ -103,8 +115,15 @@ and returns the score at each pont in the game, like so:
 Final Score: awayTeam - homeTeam */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScore, inning, numInnings){
+  let finalHome = 0;
+  let finalAway = 0;
+  for (let i=0; i<numInnings; i++){ 
+    let home = getInningScore(inning, 1).home;
+    let away = getInningScore(inning, 1).away;
+    console.log('inning: ' + i + ' home ' + home + ' away ' + away);
+    finalHome = finalHome + home;
+    finalAway = finalAway + away;
+    }
+  console.log('Final Score: home ' + finalHome + ' away ' + finalAway);
 }
-
-
