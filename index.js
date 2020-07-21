@@ -36,7 +36,7 @@ function processFirstItem(stringList, callback) {
  * Counter1 uses closure. It limits the scope of the variable "count." the closure ends at return function counter();.
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ * Counter 1 would be preferable if the variable count is going to be used elsewhere in the code.
  * 
 */
 
@@ -83,7 +83,7 @@ finalScore(inning, 9) might return:
 function finalScore(scoreGenerator, inningNumber){
   let homeScore = 0;
   let awayScore = 0;
-  for (let inn = 0; inn <= inningNumber; inn++){
+  for (let inn = 0; inn < inningNumber; inn++){
     homeScore = homeScore + scoreGenerator();
     awayScore = awayScore + scoreGenerator();
   }
@@ -115,8 +115,15 @@ and returns the score at each pont in the game, like so:
 Final Score: awayTeam - homeTeam */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScore, inning, numInnings){
+  let finalHome = 0;
+  let finalAway = 0;
+  for (let i=0; i<numInnings; i++){ 
+    let home = getInningScore(inning, 1).home;
+    let away = getInningScore(inning, 1).away;
+    console.log('inning: ' + i + ' home ' + home + ' away ' + away);
+    finalHome = finalHome + home;
+    finalAway = finalAway + away;
+    }
+  console.log('Final Score: home ' + finalHome + ' away ' + finalAway);
 }
-
-

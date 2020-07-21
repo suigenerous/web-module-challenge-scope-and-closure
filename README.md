@@ -42,6 +42,9 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+Closure is the end of a section where a variable has applicable scope.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +66,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+return function(); that's when the function scope ends.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+the format of the output is always the same, but the number changes because of math.random
+
 c. What is the lexical scope of `newRoll`? 
+
+function scope.
 
 ### Task 2c - Exit Ticket
 
